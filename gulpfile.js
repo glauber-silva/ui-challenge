@@ -1,7 +1,7 @@
 //imports
 const gulp = require('gulp');
 const cond = require('gulp-cond');
-const esling = require('gulp-eslint');
+const eslint = require('gulp-eslint');
 const inserLines = require('gulp-insert-lines');
 const mocha = require('gulp-mocha');
 const nodemon = require('gulp-nodemon');
