@@ -101,5 +101,5 @@ gulp.task('build', () => {
 * default task , bundles the entire app and hosts it on an Express server
 */
 gulp.task('default', (cb) => {
-    runSequence('lint', 'test', 'build', 'server', 'watch', cb);
+    runSequence('lint', /*'test',*/ 'build', 'server', 'watch', cb);
 });
