@@ -9,7 +9,7 @@ const gutil = require('gulp-util');
 
 //other libraries
 const del = require('del');
-const sunSequence = require('run-sequence');
+const runSequence = require('run-sequence');
 const webpack = require('webpack-stream');
 const {argv} = require('yargs');
 require('babel-core/register');
