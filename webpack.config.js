@@ -31,7 +31,7 @@ module.exports = {
     plugins: PROD ?
     [
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.DefinePlugin(GLOBASL),
+        new webpack.DefinePlugin(GLOBAL),
         new ExtractTextPlugins('bundle.css'),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({compress:{warnings: false}})

@@ -2,7 +2,7 @@
 const gulp = require('gulp');
 const cond = require('gulp-cond');
 const eslint = require('gulp-eslint');
-const inserLines = require('gulp-insert-lines');
+const insertLines = require('gulp-insert-lines');
 const mocha = require('gulp-mocha');
 const nodemon = require('gulp-nodemon');
 const gutil = require('gulp-util');
@@ -77,7 +77,7 @@ gulp.task('watch', () => {
 *depending on the mode enviroment
 */
 gulp.task('html', ()=>{
-    return gulpp.src(config.paths.html)
+    return gulp.src(config.paths.html)
     .pipe(cond(PROD, insertLines({
         before: /<\/head>$/,
         'lineBefore': '<link rel="stylesheet" href="bundle.css"/>'
