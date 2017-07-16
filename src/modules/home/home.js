@@ -1,17 +1,17 @@
 import React from 'react';
-import {Jumbotrom, Grid, Row, Col, Panel, Tabs, Tab} from 'react-bootstrap';
-import 'Home.scss';
+import {Jumbotron, Grid, Row, Col, Tabs, Tab} from 'react-bootstrap';
+import './Home.scss';
 
 
 class Home extends React.Component{
     render(){
         return(
             <div className="Home">
-                <Jumbotrom>
+                <Jumbotron>
                     <Grid>
                         <h1>GeoLocation</h1>
                     </Grid>
-                </Jumbotrom>
+                </Jumbotron>
                 <Grid>
                     <Row>
                         <Col sm={12}>
@@ -31,7 +31,7 @@ class Home extends React.Component{
                     </Row>
                 </Grid>
             </div>
-        )
+        );
     }
 }
 

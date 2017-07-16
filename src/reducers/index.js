@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { userReducer } from './user';
-import { hostReducer } from './web';
+import { hostReducer } from './host';
 
 const rootReducer = combineReducers({
     user: userReducer,

@@ -3,9 +3,9 @@ const gulp = require('gulp');
 const cond = require('gulp-cond');
 const eslint = require('gulp-eslint');
 const insertLines = require('gulp-insert-lines');
-const mocha = require('gulp-mocha');
+//const mocha = require('gulp-mocha');
 const nodemon = require('gulp-nodemon');
-const gutil = require('gulp-util');
+//const gutil = require('gulp-util');
 
 //other libraries
 const del = require('del');
