@@ -11,7 +11,7 @@ const INITIAL_STATE = {
 export function userReducer(state = INITIAL_STATE, action){
     switch(action.type){
         case 'FETCH_USER_LOCATION':
-            return {...state,
+            return Object.assign({}, state,{
                 id: action.payload.id,
                 ip: action.payload.ip,
                 countryName: action.payload.country_name,
@@ -19,7 +19,7 @@ export function userReducer(state = INITIAL_STATE, action){
                 zipCode: action.payload.zip_code,
                 latitude: action.payload.latitude,
                 longitude: action.payload.longitude
-            };
+            });
         case 'RESET_USER_LOCATION':
             return state = INITIAL_STATE;
         default:
