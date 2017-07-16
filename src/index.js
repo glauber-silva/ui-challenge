@@ -6,11 +6,12 @@ import { Router, browserHistory } from 'react-router';
 import thunk from 'redux-thunk';
 
 import reducer from './reducers';
-import Routers from './Routes';
+import Routes from './Routes';
 
 //CSS imports
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/font-awesome/css/font-awesome.css';
+import '../public/css/global.scss';
 import '../public/css/geoloaction.css';
 
 
