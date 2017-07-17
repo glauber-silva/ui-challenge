@@ -8,6 +8,7 @@ const INITIAL_STATE = {
     longitude: ""
 };
 
+
 export function hostReducer(state = INITIAL_STATE, action){
     switch(action.type){
         case 'FETCH_HOST_LOCATION':

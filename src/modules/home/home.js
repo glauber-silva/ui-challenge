@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { PropTypes } from 'prop-types';
 import {Jumbotron, Grid, Row, Col, Panel, Button} from 'react-bootstrap';
 import LocationRows from './LocationRows';
 import { getLocation } from '../../actions/actions';
 import './Home.scss';
-
 
 class Home extends React.Component{
     handleDataLocation(data){

@@ -10,7 +10,7 @@ const webpack = require('webpack');
 const app = express();
 const compiler = webpack(config);
 const PROD = process.env.NODE_ENV === 'production';
-const port = PROD ? 8080 : 3000;
+const port = PROD ? 8000 : 3001;
 const dir = PROD ? 'build' : 'dist';
 
 

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_HOST = 'http://freegeoip.net';
+const API_HOST = 'http://freegeoip.net/json/';
 
 export function onSuccess(reducer, payload) { // needs to dispatch, so it is first argument
     return{
@@ -16,9 +16,11 @@ export function onError(reducer, error) { // needs to dispatch, so it is first a
 }
 
 export function getLocation(data){
-    let site = (data) ? data : "" ;
+    let site = data;
+    let url = (site) ? API_HOST + data : API_HOST ;
+
     return function(dispatch){
-        axios.get(`${API_HOST}/${site}`)
+        axios.get(url)
         .then((response) => {
             if(site){
                 dispatch(onSuccess("FETCH_HOST_LOCATION", response));
