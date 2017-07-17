@@ -13,7 +13,8 @@ class Home extends React.Component{
     constructor(){
         super();
         this.state = {
-            website:""
+            website:"",
+            markers: []
         };
     }
     handleDataLocation(data){
@@ -30,13 +31,41 @@ class Home extends React.Component{
     updateWebSite(e){
         this.setState({website:e.target.value});
     }
+
     render(){
         let { user, host } = this.props;
+
+        const location = {
+            lat:-23.5565751,
+            lng:-46.6617431
+        };
+        
+        let markers = [
+            {
+                location :{
+                    lat: user.latitude, 
+                    lng: user.longitude
+                },
+                content : "User Estimated Location"
+                
+            },
+            {
+                location :{
+                    lat: host.latitude, 
+                    lng: host.longitude
+                },
+                content : "Site Estimated Location"
+            }
+
+        ];
+        
         return(
             <div className="Home">
                 <Jumbotron>
  
                     <Map 
+                        markers={markers}
+                        center = {location}
                         containerElement={
                             <div style={{height:500+'px'}} />
                         }
