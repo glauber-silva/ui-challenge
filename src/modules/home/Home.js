@@ -10,6 +10,12 @@ import { getLocation, resetMyLocation } from '../../actions/actions';
 import './Home.scss';
 
 class Home extends React.Component{
+    constructor(){
+        super();
+        this.state = {
+            website:""
+        };
+    }
     handleDataLocation(data){
         return(
             <LocationRows location={data}/>
@@ -20,6 +26,9 @@ class Home extends React.Component{
     }
     handleGetLocation(data){
         this.props.getLocation(data);
+    }
+    updateWebSite(e){
+        this.setState({website:e.target.value});
     }
     render(){
         let { user, host } = this.props;
@@ -69,9 +78,13 @@ class Home extends React.Component{
                                             <FormGroup>
                                                 <InputGroup>
                                                     <InputGroup.Addon>http://</InputGroup.Addon>
-                                                    <FormControl type="text" />
+                                                    <FormControl 
+                                                        type="text" 
+                                                        onChange={evt => this.updateWebSite(evt)}
+                                                        value={this.state.website}
+                                                    />
                                                     <InputGroup.Button>
-                                                        <Button bsStyle="primary">Locate</Button>
+                                                        <Button bsStyle="primary" onClick={()=>{this.handleGetLocation(this.state.website);}}>Locate</Button>
                                                     </InputGroup.Button>
                                                 </InputGroup>
                                             </FormGroup>

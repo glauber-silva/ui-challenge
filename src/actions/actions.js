@@ -21,7 +21,11 @@ export function resetMyLocation(){
     };
 }
 export function getLocation(data){
-    let site = data;
+    let site;
+    if(data){
+        site = String(data).replace(/^www\./,'');
+    }
+    console.log('SITE', site);
     let url = (site) ? API_HOST + data : API_HOST ;
 
     return function(dispatch){
