@@ -10,7 +10,7 @@ class Header extends React.Component {
                 <Navbar>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <IndexLink to="/"> GeoLocation </IndexLink>
+                            <IndexLink to="/"> GeoLocation Test</IndexLink>
                         </Navbar.Brand>    
                     </Navbar.Header>
                 </Navbar>

@@ -1,10 +1,19 @@
 import React from 'react';
-import {Jumbotron, Grid, Row, Col, Tabs, Tab} from 'react-bootstrap';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import {Jumbotron, Grid, Row, Col, Panel} from 'react-bootstrap';
+import LocationRows from './LocationRows';
 import './Home.scss';
 
 
 class Home extends React.Component{
+    handleDataLocation(data){
+        return(
+            <LocationRows location={data}/>
+        );
+    }
     render(){
+        let { user, host } = this.props;
         return(
             <div className="Home">
                 <Jumbotron>
@@ -14,19 +23,17 @@ class Home extends React.Component{
                 </Jumbotron>
                 <Grid>
                     <Row>
-                        <Col sm={12}>
-                            <Tabs defaultActiveKey={2} id="geolocation-data-panel">
-                                <Tab eventKey={1} title="User Location">
-                                    <p>
-                                        Dados de Localização do Usuário    
-                                    </p>
-                                </Tab>
-                                <Tab eventKey={2} title="Host Location">
-                                    <p>
-                                        Dados de Localização do Host    
-                                    </p>
-                                </Tab>
-                            </Tabs>
+                        <Col sm={6}>
+                            <Panel header={"User"}>
+                                <h4>User estimated location</h4>
+                                {this.handleDataLocation(user)}
+                            </Panel>
+                        </Col>
+                        <Col sm={6}>
+                            <Panel header={"Host"}>
+                                <h4>Web Site estimated location</h4>
+                                {this.handleDataLocation(host)}
+                            </Panel>
                         </Col>
                     </Row>
                 </Grid>
@@ -35,4 +42,16 @@ class Home extends React.Component{
     }
 }
 
-export default Home;
+function mapStateToProps(state){
+    return{
+        user: state.user,
+        host: state.host
+    };
+}
+
+Home.protoTypes = {
+    user: PropTypes.object.isRequired,
+    host: PropTypes.object.isRequired
+};
+
+export default connect(mapStateToProps,{})(Home);

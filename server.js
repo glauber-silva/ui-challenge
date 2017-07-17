@@ -1,5 +1,4 @@
 //imports
-
 const compression = require('compression');
 const config = require('./webpack.config');
 const express = require('express');

@@ -4,7 +4,7 @@ import { hostReducer } from './host';
 
 const rootReducer = combineReducers({
     user: userReducer,
-    web: hostReducer
+    host: hostReducer
 });
 
 export default rootReducer;
