@@ -38,6 +38,7 @@
     "yargs": "^8.0.2"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.6.3",
     "prop-types": "^15.5.10",

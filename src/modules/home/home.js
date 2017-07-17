@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {Jumbotron, Grid, Row, Col, Panel} from 'react-bootstrap';
+import {Jumbotron, Grid, Row, Col, Panel, Button} from 'react-bootstrap';
 import LocationRows from './LocationRows';
+import { getLocation } from '../../actions/actions';
 import './Home.scss';
 
 
@@ -11,6 +12,9 @@ class Home extends React.Component{
         return(
             <LocationRows location={data}/>
         );
+    }
+    handleGeLocation(data){
+        this.props.getLocation(data);
     }
     render(){
         let { user, host } = this.props;
@@ -27,6 +31,7 @@ class Home extends React.Component{
                             <Panel header={"User"}>
                                 <h4>User estimated location</h4>
                                 {this.handleDataLocation(user)}
+                                <Button bsStyle="primary" onClick={()=>{this.handleGeLocation(false);}}>My Location</Button>
                             </Panel>
                         </Col>
                         <Col sm={6}>
@@ -42,16 +47,18 @@ class Home extends React.Component{
     }
 }
 
+Home.protoTypes = {
+    user: PropTypes.object.isRequired,
+    host: PropTypes.object.isRequired,
+    getLocation: PropTypes.func
+};
+
 function mapStateToProps(state){
     return{
         user: state.user,
         host: state.host
+        
     };
 }
 
-Home.protoTypes = {
-    user: PropTypes.object.isRequired,
-    host: PropTypes.object.isRequired
-};
-
-export default connect(mapStateToProps,{})(Home);
+export default connect(mapStateToProps,{getLocation})(Home);
