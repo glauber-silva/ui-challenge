@@ -12,8 +12,6 @@ import Routes from './Routes';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/font-awesome/css/font-awesome.css';
 import '../public/css/global.scss';
-//import '../public/css/geolocation.css';
-
 
 const store = applyMiddleware(thunk)(createStore);
 

@@ -17,8 +17,8 @@ export function onError(reducer, error) { // needs to dispatch, so it is first a
 
 export function resetMyLocation(){
     return{
-        type: "RESET_USER_LOCATION",
-    }
+        type: "RESET_USER_LOCATION"
+    };
 }
 export function getLocation(data){
     let site = data;

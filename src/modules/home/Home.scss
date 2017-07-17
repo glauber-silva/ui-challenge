@@ -1,7 +1,9 @@
 @import '../../../public/css/variables';
 
 .Home {
-  // Content herew
+  .jumbotron{
+    min-height: 400px;
+  }
   button {
     margin: auto 5px;
   }
