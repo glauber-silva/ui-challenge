@@ -13,7 +13,7 @@ class LocationRows extends React.Component{
                         <span className="field-name"> IP </span>
                     </Col>
                     <Col sm={4}>
-                        <span className="location-value">TESTE </span>
+                        <span className="location-value">{location.ip}</span>
                     </Col>
                     <Help/>
                 </Row>

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import {Jumbotron, Grid, Row, Col, Panel, Button} from 'react-bootstrap';
 import LocationRows from './LocationRows';
-import { getLocation } from '../../actions/actions';
+import { getLocation, resetMyLocation } from '../../actions/actions';
 import './Home.scss';
 
 class Home extends React.Component{
@@ -12,7 +12,10 @@ class Home extends React.Component{
             <LocationRows location={data}/>
         );
     }
-    handleGeLocation(data){
+    handleResetMyLocation(){
+        this.props.resetMyLocation();
+    }
+    handleGetLocation(data){
         this.props.getLocation(data);
     }
     render(){
@@ -30,7 +33,15 @@ class Home extends React.Component{
                             <Panel header={"User"}>
                                 <h4>User estimated location</h4>
                                 {this.handleDataLocation(user)}
-                                <Button bsStyle="primary" onClick={()=>{this.handleGeLocation(false);}}>My Location</Button>
+                                <Row>
+                                    <Col sm={6}>
+                                        
+                                    </Col>
+                                    <Col sm={6}>
+                                        <Button bsStyle="primary" onClick={()=>{this.handleGetLocation(false);}}>My Location</Button>
+                                        <Button bsStyle="warning" onClick={()=>{this.handleResetMyLocation()}}>Reset</Button>
+                                    </Col>
+                                </Row>
                             </Panel>
                         </Col>
                         <Col sm={6}>
@@ -49,7 +60,8 @@ class Home extends React.Component{
 Home.protoTypes = {
     user: PropTypes.object.isRequired,
     host: PropTypes.object.isRequired,
-    getLocation: PropTypes.func
+    getLocation: PropTypes.func,
+    resetMyLocation: PropTypes.func
 };
 
 function mapStateToProps(state){
@@ -60,4 +72,4 @@ function mapStateToProps(state){
     };
 }
 
-export default connect(mapStateToProps,{getLocation})(Home);
+export default connect(mapStateToProps,{getLocation,resetMyLocation})(Home);

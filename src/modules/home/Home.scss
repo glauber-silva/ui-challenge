@@ -2,9 +2,15 @@
 
 .Home {
   // Content herew
+  button {
+    margin: auto 5px;
+  }
   .LocationRows{
     .row {
       padding: 5px;
+    }
+    .location-value{
+      color: #ff0000;
     }
     span {
       margin: auto;

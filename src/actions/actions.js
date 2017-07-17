@@ -15,6 +15,11 @@ export function onError(reducer, error) { // needs to dispatch, so it is first a
         };
 }
 
+export function resetMyLocation(){
+    return{
+        type: "RESET_USER_LOCATION",
+    }
+}
 export function getLocation(data){
     let site = data;
     let url = (site) ? API_HOST + data : API_HOST ;
@@ -23,11 +28,9 @@ export function getLocation(data){
         axios.get(url)
         .then((response) => {
             if(site){
-                dispatch(onSuccess("FETCH_HOST_LOCATION", response));
-                alert("FETCH_HOST_LOCATION", response);
+                dispatch(onSuccess("FETCH_HOST_LOCATION", response.data));
             } else {
-                dispatch(onSuccess("FETCH_USER_LOCATION", response));
-                alert("FETCH_USER_LOCATION", response);
+                dispatch(onSuccess("FETCH_USER_LOCATION", response.data));
             } 
         })
         .catch((err) => {

@@ -21,7 +21,14 @@ export function userReducer(state = INITIAL_STATE, action){
                 longitude: action.payload.longitude
             });
         case 'RESET_USER_LOCATION':
-            return state = INITIAL_STATE;
+            return Object.assign({}, state, {
+                ip: "0.0.0.0",
+                countryName: "",
+                city: "",
+                zipCode: "",
+                latitude: "",
+                longitude: ""
+            });
         default:
             return state;
 
