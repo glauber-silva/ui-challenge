@@ -10,9 +10,13 @@
     min-height: 400px;
     margin: 20px auto;
   }
-  button {
-    margin: auto 5px;
+  .MyLocationButtons{
+      text-align: center;
+      button {
+      margin: auto 5px;
+    }
   }
+
   .LocationRows{
     .row {
       padding: 5px;

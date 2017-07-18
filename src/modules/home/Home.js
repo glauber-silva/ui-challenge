@@ -90,22 +90,27 @@ class Home extends React.Component{
                             <Tabs defaultActiveKey={2} id="data-location">
                                 <Tab eventKey={1} title="User">
                                     <Row>
-                                        <Col sm={12} className="text-center">
+                                        <Col xs={12} sm={12} className="text-center">
                                             <h4>User estimated location</h4>
                                         </Col>
                                         {this.handleDataLocation(user)}
                                     
-                                        <Col sm={6}>
-                                        </Col>
-                                        <Col sm={6}>
-                                            <Button bsStyle="primary" onClick={()=>{this.handleGetLocation(false);}}>My Location</Button>
-                                            <Button bsStyle="warning" onClick={()=>{this.handleResetMyLocation();}}>Reset</Button>
+
+                                        <Col sm={12}>
+                                            <div className="MyLocationButtons">
+                                                <Col xs={6} sm={6}>
+                                                    <Button bsStyle="primary" onClick={()=>{this.handleGetLocation(false);}} block>My Location</Button>
+                                                </Col>
+                                                <Col xs={6} sm={6}>
+                                                    <Button bsStyle="warning" onClick={()=>{this.handleResetMyLocation();}} block>Reset</Button>
+                                                </Col>
+                                            </div>
                                         </Col>
                                     </Row>
                                 </Tab>
                                 <Tab eventKey={2} title="WebSite">
                                     <Row>
-                                        <Col sm={12} className="text-center">
+                                        <Col xs={12} sm={12} className="text-center">
                                             <h4>Web Site estimated location</h4>
                                         </Col>
                                         {this.handleDataLocation(host)}
