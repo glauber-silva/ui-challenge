@@ -8,7 +8,7 @@ This is a UI project developed for Avenue Code recruitment
 
 To run the setup:
 ```
-git clone https://bitbucket.org/glauber-silva/ui-recruitment
+git clone https://bitbucket.org/glauber-silva/ui-challenge
 npm install
 npm start (or npm run build)
 ```
