@@ -7,8 +7,8 @@ class Help extends React.Component{
             let now = new Date();
             this.state = {
                 showModal : false,
-                message: "This is your " + this.props.value + "according to freegeoip.net at" + now 
-            }
+                message: "This is your " + this.props.value + " according to freegeoip.net at " + now 
+            } 
         
     }
     open(){
