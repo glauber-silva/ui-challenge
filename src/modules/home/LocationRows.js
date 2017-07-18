@@ -4,6 +4,13 @@ import PropTypes from 'prop-types';
 import Help from './Help';
 
 class LocationRows extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            help: false
+        };
+    }
+
     render(){
         let { location } = this.props;
         return(
@@ -15,7 +22,7 @@ class LocationRows extends React.Component{
                     <Col sm={4}>
                         <span className="location-value">{location.ip}</span>
                     </Col>
-                    <Help/>
+                    {(location.ip) ? <Help value={"IP"}/> : <div></div>}
                 </Row>
                 <Row>
                     <Col sm={4}>
@@ -24,7 +31,7 @@ class LocationRows extends React.Component{
                     <Col sm={4}>
                         <span className="location-value">{location.countryName}</span>
                     </Col>
-                    <Help/>
+                    {(location.countryName) ? <Help value={"Country"}/> : <div></div>}
                 </Row>
                 <Row>
                     <Col sm={4}>
@@ -33,7 +40,7 @@ class LocationRows extends React.Component{
                     <Col sm={4}>
                         <span className="location-value">{location.city}</span>
                     </Col>
-                    <Help/>
+                    {(location.city) ? <Help value={"City"}/>: <div></div>}
                 </Row>
                 <Row>
                     <Col sm={4}>
@@ -42,7 +49,7 @@ class LocationRows extends React.Component{
                     <Col sm={4}>
                         <span className="location-value">{location.zipCode}</span>
                     </Col>
-                    <Help/>
+                     {(location.zipCode) ?<Help value={"Zip Code"}/> : <div></div>}
                 </Row>
                 <Row>
                     <Col sm={4}>
@@ -51,7 +58,7 @@ class LocationRows extends React.Component{
                     <Col sm={4}>
                         <span className="location-value">{location.position.lat}</span>
                     </Col>
-                    <Help/>
+                    {(location.position.lat) ? <Help value={"Latitude"}/> : <div></div>}
                 </Row>
                 <Row>
                     <Col sm={4}>
@@ -60,7 +67,7 @@ class LocationRows extends React.Component{
                     <Col sm={4}>
                         <span className="location-value">{location.position.lng}</span>
                     </Col>
-                    <Help/>
+                    {(location.position.lng) ? <Help value={"Longitude"}/> : <div></div>}
                 </Row>
             </div>
         );

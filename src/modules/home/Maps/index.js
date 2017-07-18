@@ -4,7 +4,9 @@ import {withGoogleMap, GoogleMap, Marker,InfoWindow } from "react-google-maps";
 class Map extends React.Component{
     render(){
         
-
+        /*
+        * Check if exist position before to do the load
+        */
         const markers = this.props.markers.map((mrk, i) => {
           if(mrk.position.lat){
             return <Marker key={i} {...mrk}><InfoWindow><div>{mrk.content}</div></InfoWindow></Marker>;
@@ -12,6 +14,10 @@ class Map extends React.Component{
         });
         
         const center = this.props.center;
+
+        /*
+        * Load the Map
+        */
         return(
               <GoogleMap
                 defaultZoom={15}

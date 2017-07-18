@@ -25,7 +25,7 @@ export function getLocation(data){
     if(data){
         site = String(data).replace(/^www\./,'');
     }
-    console.log('SITE', site);
+
     let url = (site) ? API_HOST + data : API_HOST ;
 
     return function(dispatch){
