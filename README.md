@@ -7,7 +7,6 @@ This is a UI project developed for Avenue Code recruitment
 ***
 
 To run the setup:
-
 ```
 clone https://bitbucket.org/glauber-silva/ui-recruitment
 npm install
@@ -17,6 +16,7 @@ npm start (or npm run build)
 To run tests:
 ```
 npm test
+```
 
 Javascript Libraries used:
 

@@ -1,8 +1,14 @@
 @import '../../../public/css/variables';
 
 .Home {
-  .jumbotron{
+  
+  .container{
+    background-color: #fff;
+    padding-top: 20px;
+  }
+  .Map{
     min-height: 400px;
+    margin: 20px auto;
   }
   button {
     margin: auto 5px;

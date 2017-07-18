@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import {Jumbotron, Grid, Row, Col, Panel, Button,
-    FormGroup, FormControl, InputGroup} from 'react-bootstrap';
+    FormGroup, FormControl, InputGroup, Tabs, Tab} from 'react-bootstrap';
 import Map from './Maps';
 import LocationRows from './LocationRows';
 import { getLocation, resetMyLocation } from '../../actions/actions';
@@ -30,8 +30,10 @@ class Home extends React.Component{
             }
         };
     }
+    /*
+    * Updata form and map information about user and website (host)
+    */
     componentWillReceiveProps(nextProps){
-        console.log("nextProps");
         this.setState({
             markers:[
                 {
@@ -45,110 +47,111 @@ class Home extends React.Component{
             ]
         });
     }
+    /*
+    * Load inputs for data location
+    */
     handleDataLocation(data){
         return(
             <LocationRows location={data}/>
         );
     }
+    /*
+    * Reset User Location
+    */
     handleResetMyLocation(){
         this.props.resetMyLocation();
         this.setState({
             markers:[]
         });
     }
+    /*
+    * Call action to executa a async function to load location
+    */
     handleGetLocation(data){
         this.props.getLocation(data);
     }
+    /*
+    * Function to get website's input
+    */
     updateWebSite(e){
         this.setState({website:e.target.value});
     }
-
+    /*
+    * Render Map and form inputs
+    */
     render(){
         let { user, host } = this.props;
-        /*
-        const markers = [
-            {
-                location :{
-                    lat: user.latitude, 
-                    lng: user.longitude
-                },
-                content : "User Estimated Location",
-                show: (user.latitude)? true : false
-                
-            },
-            {
-                location :{
-                    lat: host.latitude, 
-                    lng: host.longitude
-                },
-                content : "Site Estimated Location",
-                show: (host.latitude)? true : false
-            }
-            
-        ];
-        */
+
         return(
             <div className="Home">
-                <Jumbotron>
- 
-                    <Map 
-                        markers={this.state.markers}
-                        center = {this.state.location}
-                        containerElement={
-                            <div style={{height:500+'px'}} />
-                        }
-                        mapElement={
-                            <div style={{height:500+'px'}} />
-                        }
-                    />
-
-                </Jumbotron>
                 <Grid>
                     <Row>
-                        <Col sm={6}>
-                            <Panel header={"User"}>
-                                <Row>
-                                    <Col sm={12} className="text-center">
-                                        <h4>User estimated location</h4>
-                                    </Col>
-                                    {this.handleDataLocation(user)}
-                                
-                                    <Col sm={6}>
-                                    </Col>
-                                    <Col sm={6}>
-                                        <Button bsStyle="primary" onClick={()=>{this.handleGetLocation(false);}}>My Location</Button>
-                                        <Button bsStyle="warning" onClick={()=>{this.handleResetMyLocation();}}>Reset</Button>
-                                    </Col>
-                                </Row>
-                            </Panel>
+                        <Col sm={12}>
+                            <Tabs defaultActiveKey={2} id="data-location">
+                                <Tab eventKey={1} title="User">
+                                    <Row>
+                                        <Col sm={12} className="text-center">
+                                            <h4>User estimated location</h4>
+                                        </Col>
+                                        {this.handleDataLocation(user)}
+                                    
+                                        <Col sm={6}>
+                                        </Col>
+                                        <Col sm={6}>
+                                            <Button bsStyle="primary" onClick={()=>{this.handleGetLocation(false);}}>My Location</Button>
+                                            <Button bsStyle="warning" onClick={()=>{this.handleResetMyLocation();}}>Reset</Button>
+                                        </Col>
+                                    </Row>
+                                </Tab>
+                                <Tab eventKey={2} title="WebSite">
+                                    <Row>
+                                        <Col sm={12} className="text-center">
+                                            <h4>Web Site estimated location</h4>
+                                        </Col>
+                                        {this.handleDataLocation(host)}
+                                        <Col sm={12}>
+                                            <form>
+                                                <FormGroup>
+                                                    <InputGroup>
+                                                        <InputGroup.Addon>http://</InputGroup.Addon>
+                                                        <FormControl 
+                                                            type="text" 
+                                                            onChange={evt => this.updateWebSite(evt)}
+                                                            value={this.state.website}
+                                                        />
+                                                        <InputGroup.Button>
+                                                            <Button 
+                                                                bsStyle="primary" 
+                                                                onClick={()=>{this.handleGetLocation(this.state.website);}}
+                                                            >
+                                                                Locate
+                                                            </Button>
+                                                        </InputGroup.Button>
+                                                    </InputGroup>
+                                                </FormGroup>
+                                            </form>
+                                        </Col>
+                                    </Row>
+                                </Tab>
+                            </Tabs>
                         </Col>
-                        <Col sm={6}>
-                            <Panel header={"Host"}>
-                                <Row>
-                                    <Col sm={12} className="text-center">
-                                        <h4>Web Site estimated location</h4>
-                                    </Col>
-                                    {this.handleDataLocation(host)}
-                                
-                                    <Col sm={12}>
-                                        <form>
-                                            <FormGroup>
-                                                <InputGroup>
-                                                    <InputGroup.Addon>http://</InputGroup.Addon>
-                                                    <FormControl 
-                                                        type="text" 
-                                                        onChange={evt => this.updateWebSite(evt)}
-                                                        value={this.state.website}
-                                                    />
-                                                    <InputGroup.Button>
-                                                        <Button bsStyle="primary" onClick={()=>{this.handleGetLocation(this.state.website);}}>Locate</Button>
-                                                    </InputGroup.Button>
-                                                </InputGroup>
-                                            </FormGroup>
-                                        </form>
-                                    </Col>
-                                </Row>
-                            </Panel>
+                        <Col sm={12}>
+                            <div className="Map">
+                            {(user.ip || host.ip) ?
+                                <Map 
+                                    markers={this.state.markers}
+                                    center = {this.state.location}
+                                    containerElement={
+                                        <div style={{height:500+'px'}} />
+                                    }
+                                    mapElement={
+                                        <div style={{height:500+'px'}} />
+                                    }
+                                /> 
+                                :
+                                <div></div>
+                            }
+                            </div>
                         </Col>
                     </Row>
                 </Grid>
