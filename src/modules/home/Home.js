@@ -10,12 +10,40 @@ import { getLocation, resetMyLocation } from '../../actions/actions';
 import './Home.scss';
 
 class Home extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             website:"",
-            markers: []
+            markers:[
+                {
+                    position: this.props.user.position,
+                    content: "User Location"
+                },
+                {
+                    position:this.props.host.position,
+                    content: "Site Content"
+                }
+            ],
+            location:{
+                lat:-23.5565751,
+                lng:-46.6617431
+            }
         };
+    }
+    componentWillReceiveProps(nextProps){
+        console.log("nextProps");
+        this.setState({
+            markers:[
+                {
+                    position:nextProps.user.position,
+                    content: "User Locaction"
+                },
+                {
+                    position: nextProps.host.position,
+                    content: "Site Location"
+                }
+            ]
+        });
     }
     handleDataLocation(data){
         return(
@@ -24,6 +52,9 @@ class Home extends React.Component{
     }
     handleResetMyLocation(){
         this.props.resetMyLocation();
+        this.setState({
+            markers:[]
+        });
     }
     handleGetLocation(data){
         this.props.getLocation(data);
@@ -34,19 +65,15 @@ class Home extends React.Component{
 
     render(){
         let { user, host } = this.props;
-
-        const location = {
-            lat:-23.5565751,
-            lng:-46.6617431
-        };
-        
-        let markers = [
+        /*
+        const markers = [
             {
                 location :{
                     lat: user.latitude, 
                     lng: user.longitude
                 },
-                content : "User Estimated Location"
+                content : "User Estimated Location",
+                show: (user.latitude)? true : false
                 
             },
             {
@@ -54,18 +81,19 @@ class Home extends React.Component{
                     lat: host.latitude, 
                     lng: host.longitude
                 },
-                content : "Site Estimated Location"
+                content : "Site Estimated Location",
+                show: (host.latitude)? true : false
             }
-
+            
         ];
-        
+        */
         return(
             <div className="Home">
                 <Jumbotron>
  
                     <Map 
-                        markers={markers}
-                        center = {location}
+                        markers={this.state.markers}
+                        center = {this.state.location}
                         containerElement={
                             <div style={{height:500+'px'}} />
                         }

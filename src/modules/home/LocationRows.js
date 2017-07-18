@@ -49,7 +49,7 @@ class LocationRows extends React.Component{
                         <span className="field-name"> Latitude </span>
                     </Col>
                     <Col sm={4}>
-                        <span className="location-value">{location.latitude}</span>
+                        <span className="location-value">{location.position.lat}</span>
                     </Col>
                     <Help/>
                 </Row>
@@ -58,7 +58,7 @@ class LocationRows extends React.Component{
                         <span className="field-name"> Longitude </span>
                     </Col>
                     <Col sm={4}>
-                        <span className="location-value">{location.longitude}</span>
+                        <span className="location-value">{location.position.lng}</span>
                     </Col>
                     <Help/>
                 </Row>

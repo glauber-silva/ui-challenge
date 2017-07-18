@@ -4,30 +4,36 @@ const INITIAL_STATE = {
     countryName: "",
     city: "",
     zipCode: "",
-    latitude: "",
-    longitude: ""
+    position:{
+        lat:"",
+        lng:""
+    }
 };
 
 export function userReducer(state = INITIAL_STATE, action){
     switch(action.type){
         case 'FETCH_USER_LOCATION':
             return Object.assign({}, state,{
-                id: action.payload.id,
                 ip: action.payload.ip,
                 countryName: action.payload.country_name,
                 city: action.payload.city,
                 zipCode: action.payload.zip_code,
-                latitude: action.payload.latitude,
-                longitude: action.payload.longitude
+                position:{
+                    lat:action.payload.latitude,
+                    lng:action.payload.longitude
+                }
             });
+            
         case 'RESET_USER_LOCATION':
             return Object.assign({}, state, {
-                ip: "0.0.0.0",
+                ip: "",
                 countryName: "",
                 city: "",
                 zipCode: "",
-                latitude: "",
-                longitude: ""
+                position:{
+                    lat:"",
+                    lng:""
+                }
             });
         default:
             return state;
