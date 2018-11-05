@@ -1,4 +1,4 @@
-# Avenue Code UI Challenge #
+# Code UI Challenge #
 
 This is a UI project developed for Avenue Code recruitment
 
