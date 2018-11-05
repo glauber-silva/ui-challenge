@@ -1,6 +1,6 @@
 # Code UI Challenge #
 
-This is a UI project developed for Avenue Code recruitment
+This is a UI project developed for a test recruitment
 
 
 
